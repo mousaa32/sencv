@@ -169,7 +169,7 @@
 
   // jQuery counterUp (used in Facts section)
   $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
+    delay: 7,
     time: 1000
   });
 
