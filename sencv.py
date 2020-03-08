@@ -28,13 +28,15 @@ def index():
 @app.route('/contact',methods= ['GET','POST'])
 def contact():
     if request.method == "POST":
+        name=request.form['name'].lower().strip()
         email=request.form['email'].lower().strip()
+        subject=request.form['subject'].lower().strip()
         message=request.form['message'].lower().strip()
         
-        cur.execute("INSERT INTO users_cv(email,message) VALUES(%s,%s)",(email,message))
+        cur.execute("INSERT INTO users_cv(name,email,subject,message) VALUES(%s,%s,%s,%s)",(name,email,subject,message))
         con.commit()
 
-        flash("mot de passe ou nom d'utilisateur incorect")
+        # flash("mot de passe ou nom d'utilisateur incorect")
         # return redirect(url_for('index'))
     return  render_template('contact.html')
 
